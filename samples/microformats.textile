@@ -1,0 +1,43 @@
+title: Microformats - Adding Semantics to Your Web Site - Web 3.0 in Action
+author: Jack Tang
+position: Founder of Cloud-Ready
+contact: himars@gmail.com
+website: http://jacktang.github.com
+
+
+h1. Microformats Outline
+
+Agenda
+
+* What is the Semantic Web? What's Web 3.0?
+* What are Microformats? Why do Microformats matter?
+* Microformats and Browser Plugins and JavaScript APIs
+* Microformats and Ruby on Rails
+* Adding semantics to your web pages (marking up people, events, locations and more using Microformats) and 
+  enabling Google Map listings, exporting contacts to your address book and more.
+* Creating RESTful web services using Microformats
+
+
+h1. What is the Semantic Web? What's Web 3.0?
+
+What's HTML?
+
+* The world's most popular markup language.
+* About 50 tags to markup hypertext documents.
+
+Less than 50 tags -> lots of meaning (that is, semantics) gets lost when marking up documents.
+
+Example:
+
+{{{
+<h1>VanDev: Microformats - Adding Semantics to Your Web Site</h1>
+
+<p>Wednesday, April 16, 2008  <br>
+
+UBC Robson Square<br>
+800 Robson St.<br>
+Vancouver, British Columbia<br>
+</p>
+}}}
+
+HTML tags such as @h1@ (heading1) and @p@ (paragraph) and @br@ (break) are kind of meaningless (without semantics).
