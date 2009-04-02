@@ -1,0 +1,47 @@
+title: Slides for Hacker
+author: Jack Tang
+company: Keep Discovering Team
+email: himars@gmail.com
+website: http://jacktang.github.com
+
+
+h1. Hackers
+
+ * Lazy, *Lazy enough*!
+ * Good at coding, but not very good at design
+ * We loving coding, and love spreading ideas
+
+
+h1. Presentation Matters, But
+
+ * It takes time to collect materials
+ * It takes time to write outlines
+ * It takes time to design beautiful theme, we love beauty 
+ * It takes time to design scenario/effects
+
+h1. HackerSlides Promises You
+
+ * Focus on writing the slides
+ * Choose the theme
+ * Generate it!
+
+h1. HackerSlides Promises More ...
+
+ * Install bundle online
+ * Put the slides under version controlling
+ * Publish it to WWW
+
+h1. How to Use HackerSlides
+
+ * sudo apt-get install ruby
+ * sudo gem install hacker-slides -s http://gems.github.com
+ * hacker-slides -h
+ * hacker-slides -l
+ * hacker-slides -g myslide.textile
+ * hacker-slides myslide.textile -o slides -b s5-simple
+
+h1. Not the End
+
+h2. Thank you, it is only the beginning 
+
+
