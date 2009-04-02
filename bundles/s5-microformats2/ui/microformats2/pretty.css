@@ -1,0 +1,138 @@
+/* Following are the presentation styles -- edit away! */
+body { background: #000; color: #fff; font-size: 2em; }
+:link, :visited {text-decoration: none; color: #3AF; /*#27D;*/}
+a:hover {text-decoration:underline}
+:link img,:visited img,abbr {border:0}
+#controls :active {color: #88A !important;}
+#controls :focus {outline: 1px dotted #227;}
+h1, h2, h3, h4 {font-size: 100%; margin: 0; padding: 0; font-weight: inherit;}
+ul, pre {margin: 0; line-height: 1em;}
+html, body {margin: 0; padding: 0;}
+
+blockquote, q {font-style: italic;}
+blockquote {padding: 0 1em 0.5em; margin: 0 1em 0.5em; text-align: center; font-size: 1em;}
+blockquote p {margin: 0;}
+blockquote i {font-style: normal;}
+blockquote b {display: block; margin-top: 0.5em; font-weight: normal; font-size: smaller; font-style: normal;}
+blockquote b i {font-style: italic;}
+
+kbd {font-weight: bold; font-size: 1em;}
+sup {font-size: smaller; line-height: 1px;}
+
+code {padding: 2px 0.25em; font-weight: bold; color: #533;}
+code.bad, code del {color: red;}
+code.good, code ins {color: #0c0;}
+code.old {color: silver;}
+pre {padding: 0; margin: 0.25em 0 0.5em 0.5em; color: #999; font-size: 90%;}
+li li pre { margin:.12em 0 0; padding:.12em 0 0 }
+pre code {display: block; color:#999 }
+pre code.text,pre code span.text { color:#333 }
+pre code .added,pre code ins { color:#3C3 }
+pre code span.complete { color:#33C }
+pre code abbr { border:0 }
+pre code del { color:#C33 }
+ol.presentation { margin:0; padding:0 }
+.slide ul {margin-left: 5%; margin-right: 7%; list-style: disc; list-style-image: url(bullet-alt.gif);}
+.slide li {margin-top: 0.5em; margin-right: 0;}
+.slide ul ul {line-height: 1; list-style-image:url(bullet-alt.gif);}
+.slide ul ul li {margin: .2em; font-size: 85%;}
+.slide img.leader {display: block; margin: 0 auto;}
+.slide.cc { background:#fff }
+.slide.history li {float:left;width:11em;list-style:none;text-align:center;padding:0;margin:0;line-height:1.1}
+.slide.history ul {margin:0;padding:0}
+.slide.history li li { margin:.5em auto 0 auto; width:12em; border:1px solid; padding:.5em; text-align:center; font-size:.8em; background:none }
+.slide.history li li li {float:none; width:auto; border:0; margin:0; padding:0; list-style: disc inside url(bullet-alt.gif); text-align:left }
+.slide.history li li li.incremental,.slide.history li li.incremental li {list-style-image: none }
+.history .bad { text-decoration:line-through }
+.history code { margin:0;padding:0; font-size:.9em }
+.history li>pre { border-top:1px dashed }
+.slide.microformatslist li {float:left;width:15.5em;list-style:none;text-align:center;padding:0;margin:0;line-height:1.1}
+.slide.microformatslist ul {margin:0;padding:0}
+.slide.microformatslist li li { float:none; width:auto; border:0; margin:0 0 .5em; padding:0; list-style: disc inside url(bullet-alt.gif); text-align:left }
+.slide.microformatslist li li li { margin:0 0 0 1.5em }
+.slide.microformatslist li li.incremental,.slide.microformatslist li.incremental li {list-style-image: none }
+
+/* theme block */
+div#header, div#footer,#controls #navLinks a
+ { color: #fff; background: transparent; } 
+#controls #navLinks a { color: #000; }
+div#footer img {
+    position:absolute;
+    bottom:0;left:0;
+    margin-bottom: .5em;
+    margin-left: .5em;
+    height:4em;
+}
+.slide h1 { color: #fff; text-align:center}
+.slide h2 {
+    margin: 0;
+    padding: 0;
+    font-family: "Trebuchet MS", sans-serif;
+    font-size:70%;
+    color: #E97E00;
+}
+.slide li h2 { font-family:inherit; color:inherit; font-size:inherit }
+/* */
+
+/* hCard styling */
+.vcard { font-style:normal; margin:0; }
+.vcard .fn,.vcard .title { display:block;margin-top:.2em }
+/* */
+
+div#header, div#footer {font-family: Verdana, Helvetica, sans-serif;}
+div#header {line-height: 1px;}
+div#footer {font-size: 0.5em; font-weight: bold; padding: 1em 0;}
+#footer h1, #footer h2 {display: block; padding: 0 1em;}
+#footer h2 {font-style: italic;}
+
+div.long {font-size: 0.75em;}
+.slide h1 {position: absolute; top: 0.3em; left: 0; z-index: 1; width:100%;
+  margin:0; padding-top: 0.3em; white-space: nowrap;
+  font: bold 150%/1em Helvetica, sans-serif;;
+}
+.slide h3 {font-size: 130%;}
+.slide li h3,.process em { font-size:1em; color: #E97E00;}
+h1 abbr {font-variant: small-caps;}
+
+div#controls {position: absolute; left: 50%; bottom: 0;
+  width: 50%;
+  text-align: right; font: bold 0.9em Verdana, Helvetica, sans-serif;}
+html>body div#controls {position: fixed; padding: 0 0 1em 0;
+  top: auto;}
+div#controls form {position: absolute; bottom: 0; right: 0; width: 100%;
+  margin: 0; padding: 0;}
+#controls #navLinks a {
+  padding: 0; margin: 0 0.5em; 
+  border: 0; 
+  cursor: pointer;}
+#controls #navList {height: 1em;}
+#controls #navList #jumplist {position: absolute; bottom: 0; right: 0; background: #fbfbf1; color: #53584A;}
+
+#currentSlide {display:none; /* text-align: center; font-size: 0.5em; color: #000; visibility:hidden*/ }
+
+#slide0 {padding-top: 2.5em; font-size: 90%;font: bold 1em Helvetica, sans-serif}
+#slide0 h1 {position: static; margin: 1em 0 0; padding: 0; text-align:left;
+   font: bold 2.5em Helvetica, sans-serif; white-space: normal;
+   color: #fff; background: transparent; text-transform:none}
+#slide0 h2 {font: normal 1.5em Helvetica, sans-serif; margin: 0.25em 0;}
+#slide0 h3,#slide0 .vcard .fn {margin-top: 1em; font-size: 1.1em; display:block;}
+#slide0 h4 {margin-top: 0; font-size: 1em;}
+
+ul.urls {list-style: none; display: inline; margin: 0;}
+.urls li {display: inline; margin: 0;}
+.note {display: none;}
+.external {border-bottom: 1px dotted gray;}
+html>body .external {border-bottom: none;}
+/* .external:after {content: " \274F"; font-size: smaller } /* ;color: #77B */
+
+.slide .incremental,.slide .incremental * {color: #000; visibility: visible; list-style-image:none}
+.incremental *:after {color: #000; visibility: visible;}
+.slide .incremental img,.slide img.incremental {visibility: hidden;}
+/* .slide .current {color: #F87517;} */
+
+
+/* diagnostics*/
+
+/*li:after {content: " [" attr(class) "]"; color: #F88;}*/
+
+ 

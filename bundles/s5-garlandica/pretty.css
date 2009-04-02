@@ -1,0 +1,49 @@
+/*
+ Theme: Drupal S5
+*/
+
+html {
+  height: 99%;
+}
+
+body {background: #E5F3FC url('bg-slide.jpg');
+  background-position: bottom left;
+  height: 100%;
+  color: #012C46; font: 32px Arial, sans-serif;}
+a {text-decoration: none; color: #336; border-bottom: 1px dotted;}
+h1, h2, h3, h4, h5, h6 {font-size: 1em; margin: 0;}
+sup {font-size: 0.75em; font-weight: normal;
+  vertical-align: 0.5em; line-height: 1px;}
+ul {margin-left: 1em; padding-left: 0;}
+li {margin-bottom: 0.66em;}
+li li {margin: 0.33em 0; font-size: smaller;}
+
+#header {background: transparent;
+  padding-bottom: 2em;}
+#footer {color: #BBB; border-top: 0px solid #333;}
+#header, #footer {font-size: 0.5em;}
+#footer h1, #footer h2 { padding: 0.5em 0.75em;
+  font-weight: normal;}
+#footer h1 {left: 0; font-size: 1em; letter-spacing: 10px;}
+#footer h2 {position: absolute; bottom: 10; right: 10;}
+
+#controls {font-size: 0.65em;}
+#navList {margin-top: 3px;}
+#navLinks a {margin: 0 0.5em; padding: 0 0.25em;
+  border: 1px solid; border-color: #0077C0; font-weight: bold; color:#0077C0;
+  background-color: #EDF5FA;}
+
+#currentSlide {font-size: 0.5em;}
+#currentSlide span { color: #fff;}
+#currentSlide #csSep {display: none;}
+#currentSlide #csHere {}
+#currentSlide #csHere:before {font-weight: normal;}
+#currentSlide #csTotal:before {content: " / ";}
+
+.slide h1 {font-size: 1.3em; line-height: 1; letter-spacing: -1px;
+  margin: 0 -15% 2em 0; padding: 0.25em 15% 0.06125em 0;}
+#slide0 h1 {border: none; font-size: 1.5em; letter-spacing: 0; margin: 2em 0 1.5em;}
+#slide0 h3 {margin: 0.5em 0 0;}
+#slide0 h4 {margin-top: 0; font-size: smaller;}
+
+.slide .current {color: #003;}

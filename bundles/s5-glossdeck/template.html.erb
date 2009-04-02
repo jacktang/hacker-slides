@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <%=slide_metadata %>  
+
+  <!-- configuration parameters -->
+  <meta name="defaultView" content="slideshow" />
+  <meta name="controlVis" content="hidden" />
+
+  <link rel="stylesheet" href="ui/glossdeck/slides.css" type="text/css" media="projection" id="slideProj" />
+  <link rel="stylesheet" href="ui/glossdeck/outline.css" type="text/css" media="screen" id="outlineStyle" />
+  <link rel="stylesheet" href="ui/glossdeck/print.css" type="text/css" media="print" id="slidePrint" />
+  <link rel="stylesheet" href="ui/glossdeck/opera.css" type="text/css" media="projection" id="operaFix" />
+
+  <script src="ui/glossdeck/slides.js" type="text/javascript"></script>
+</head>
+<body>
+
+  <div class="layout">
+    <div id="controls"><!--     don't delete me --></div>
+    <div id="currentSlide"><!-- don't delete me --></div>
+    <div id="header"></div>
+    <div id="footer">
+      <%=slide_footer %>
+    </div>
+  </div>
+
+  <!-- start presentation --><div class="presentation">
+
+  <%=slides %>
+
+<!-- end presentation --></div>
+  <img id="background" src="ui/glossdeck/gradient-bg.jpg" alt="" />
+
+</body>
+</html>
+

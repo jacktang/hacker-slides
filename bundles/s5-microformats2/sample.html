@@ -1,0 +1,627 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>Microformats from the Ground Up</title>
+<!-- metadata -->
+<meta name="generator" content="S5" />
+<meta name="version" content="S5 1.2a2" />
+<meta name="author" content="Ryan S. King" />
+<meta name="author" content="Brian Suda" />
+<!-- configuration parameters -->
+<meta name="defaultView" content="slideshow" />
+<meta name="controlVis" content="hidden" />
+<!-- style sheet links -->
+<link rel="stylesheet" href="ui/microformats2/slides.css" type="text/css" media="projection" id="slideProj" />
+<link rel="stylesheet" href="ui/microformats2/outline.css" type="text/css" media="screen" id="outlineStyle" />
+<link rel="stylesheet" href="ui/microformats2/print.css" type="text/css" media="print" id="slidePrint" />
+<link rel="stylesheet" href="ui/microformats2/opera.css" type="text/css" media="projection" id="operaFix" />
+<!-- embedded styles -->
+<style type="text/css" media="all">
+#slide0 h1 {
+  text-align: center;
+}
+
+#slide0 h3 a{
+  color:#E97E00;
+}
+
+.slide div.notes{
+  display:none;
+}
+
+.slide.standalone h1 {
+  text-align: center;
+  margin-top:3em;
+  font-size:200%;
+}
+
+.slide.whatcha-want p{
+  text-align: center;
+  font-size: 175%;
+}
+
+code em.tagspace {
+  color:#E97E00;
+}
+
+code em.tag {
+  color:#3AF;
+}
+
+ol.code li code {
+  color:white;
+  font-size:90%;
+}
+
+ol.code li.incremental code {
+  color:grey;
+  font-size:90%;
+}
+
+ol.code li.current code {
+  color:#E97E00;
+  font-size:90%;
+}
+
+.slide ol.code li { margin: 0px;}
+.slide ol.code li {font-size: 80%}
+.slide ol.code {
+    list-style-type: decimal-leading-zero;
+    list-style-position: inside;
+}
+.slide ol.code li code {
+    white-space: pre;
+}
+
+</style>
+<!-- S5 JS -->
+<script src="ui/default/slides.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="layout">
+<div id="controls"><!-- DO NOT EDIT --></div>
+<div id="currentSlide"><!-- DO NOT EDIT --></div>
+<div id="header"></div>
+<div id="footer">
+<h1>Adding Microformats to Your Site</h1>
+<h2>Refresh Edinburgh</h2>
+</div>
+</div>
+
+<ol class="xoxo presentation">
+
+<li class="slide">
+  <h1>Microformats</h1>
+  <h3><a href="http://theryanking.com/">Ryan King</a></h3>
+  <h4><a href="http://www.technorati.com/" rel="external">Technorati</a></h4>
+  <h3><a href="http://suda.co.uk/">Brian Suda</a></h3>
+</li>
+
+<li class="slide standalone">
+  <h1><a style="font-size:60%;" href="http://theryanking.com/presentations/2006/refresh-edi/">http://theryanking.com/presentations/2006/refresh-edi/</a></h1>
+</li>
+
+<li class="slide">
+  <h1>quick show of hands...</h1>
+  <ul class="incremental">
+      <li>developers?</li>
+      <li>used microformats?</li>
+    <li>English first language?</li>
+  </ul>
+</li>
+
+<li class="slide">
+  <h1>What <em>are</em> microformats?</h1>
+  <ul class="incremental">
+    <li>easy conventions for marking up data on the Web.</li>
+    <li>solutions to common, specific problems.</li>
+  </ul>
+</li>
+
+<li class="slide">
+  <h1>What microformats <em>are not</em>.</h1>
+  <ul class="incremental">
+    <li>Open-ended systems</li>
+    <li>Complex</li>
+    <li>Solution to world peace</li>
+  </ul>
+</li>
+
+<li class="slide">
+  <h1>History</h1>
+  <h2>A Brief History of the Web, Abridged</h2>
+    <ul class="incremental">
+      <li><abbr title="HyperText Markup Language">HTML</abbr> was structured (c. 1993)</li>
+      <li>Browser wars</li>
+      <li>Engineers revolted:
+        <ul>
+          <li>some invented XML (and later RDF)</li>
+          <li>others invented CSS</li>
+        </ul>
+      </li>
+      <li>Microformats merges these two trends (best of both)</li>
+    </ul>
+</li>
+
+
+<li class="slide">
+  <h1>Microformats Principles</h1>
+  <ul class="incremental">
+    <li>solve a specific problem</li>
+    <li>simple as possible
+      <ul class="incremental">
+        <li>evolutionary improvements</li>
+      </ul>
+    </li>
+    <li>humans first, machines second
+      <ul class="incremental">
+        <li>presentable <em>and</em> parsable</li>
+        <li>adapt to current behaviors</li>
+      </ul>
+    </li>
+    <li>reuse from widely adopted standards
+      <ul class="incremental">
+        <li>semantic (X)HTML, schemas from interoperable RFCs</li>
+      </ul>
+    </li>
+    <li>modularity / embeddability</li>
+    <li>decentralized development, content, services
+      <ul><li>explicitly encourage "spirit of the Web"</li></ul>
+    </li>
+  </ul>
+</li>
+
+<li class="slide standalone">
+  <h1>Examples</h1>
+</li>
+
+
+<li class="slide standalone">
+  <h1>rel-tag</h1>
+</li>
+
+<li class="slide">
+  <h1>rel-tag</h1>
+
+  <p>In <a href="http://theryanking.com/blog/archives/2005/09/05/usmnt-germany-2006/">this blog post</a>,
+    we see:</p>
+    <pre><code>
+&lt;a rel="tag" href="http://technorati.com/tag/usmnt"&gt;USMNT&lt;/a&gt;
+    </code></pre>
+</li>
+
+<li class="slide">
+  <h1>rel-tag</h1>
+  <h2>Technorati Tag Page</h2>
+  <p>...and on Technorati, we see this:</p>
+    <img alt="Technorati Tag Page for USMNT" src="tag.png" />
+</li>
+
+<li  class="slide">
+  <h1>rel-tag</h1>
+  <dl>
+    <dt>Purpose</dt>
+      <dd>Allow authors to assign keywords to stuff.</dd>
+    <dt>Format</dt>
+      <dd><code>&lt;a rel="tag" href="<em class="tagspace">tagspace</em>/<em class="tag">tag</em>"&gt;...&lt;/a&gt;</code></dd>
+ </dl>
+</li>
+
+<li  class="slide">
+  <h1>rel-tag</h1>
+  <h2>Examples</h2>
+    <ul class="incremental">
+      <li><code>&lt;a rel="tag" href="<em class="tagspace">http://technorati.com/tag</em>/<em class="tag">refresh-edinburgh</em>"&gt;Refresh Edinburgh&lt;/a&gt;</code></li>
+      <li><code>&lt;a rel="tag" href="<em class="tagspace">http://odeo.com/tags</em>/<em class="tag">refresh-edinburgh</em>"&gt;Refresh Edinburgh&lt;/a&gt;</code></li>
+      <li><code>&lt;a rel="tag" href="<em class="tagspace">http://en.wikipedia.org/wiki</em>/<em class="tag">refresh-edinburgh</em>"&gt;Refresh Edinburgh&lt;/a&gt;</code></li>
+    </ul>
+</li>
+
+<li  class="slide">
+  <h1>rel-tag</h1>
+  <h2>Publishers</h2>
+  <ul>
+    <li>Bloggers (lots of 'em),
+      <ul>
+        <li>Built into WordPress, LiveJournal, etc</li>
+        <li>Plugins for MoveableType, etc.</li>
+      </ul>
+    </li>
+    <li><a href="http://odeo.com">Odeo</a></li>
+    <li><a href="http://upcoming.org">Upcoming.org</a></li>
+    <li><a href="http://evdb.com">EVDB</a></li>
+  </ul>
+</li>
+
+<li class="slide">
+  <h1>rel-tag</h1>
+  <h2>Consumers</h2>
+  <ul>
+    <li><a href="http://technorati.com/">Technorati</a></li>
+    <li><a href="http://blogs.icerocket.com/">IceRocket</a></li>
+  </ul>
+</li>
+
+<li class="slide standalone">
+  <h1><abbr title="XHTML Friends Network">XFN</abbr></h1>
+</li>
+
+<li class="slide">
+  <h1>XFN</h1>
+  <dl>
+    <dt>Purpose</dt>
+    <dd>Distributed Social Networks</dd>
+    <dt>Example</dt>
+    <dd><code>&lt;a <em>rel="colleague met"</em> href="http://tantek.com"&gt;Tantek Çelik&lt;/a&gt;</code></dd>
+  </dl>
+</li>
+
+<li class="slide">
+  <h1>Selected <abbr title="XHTML Friends Network">XFN</abbr> Properties</h1>
+  <ul class="xfn-properties">
+    <li>acquaintance</li>
+    <li>friend</li>
+    <li>met</li>
+    <li>co-worker</li>
+    <li>sibling</li>
+    <li>spouse</li>
+    <li>muse</li>
+    <li>crush</li>
+    <li>date</li>
+  </ul>
+  <div class="handout">
+    <p>These are just some of the XFN properties. The rest are available on
+      the <a href="http://www.gmpg.org/xfn/11">XFN profile page</a>.</p>
+  </div>
+</li>
+
+<li class="slide">
+  <h1>XFN</h1>
+  <h2>Producers</h2>
+    <ul class="incremental">
+      <li>Bloggers (that's who it was made for)</li>
+      <li>Wordpress (builtin)</li>
+      <li>Blosxom (<a href="http://weblog.scifihifi.com/2004/02/08/autoxfn-10">plugin</a>)</li>
+      <li>Moveable Type (<a href="http://weblog.scifihifi.com/2004/02/08/autoxfn-10">plugin</a>)</li>
+      <li>JournalSpace (builtin)</li>
+      <li>MetaFilter</li>
+      <li>others</li>
+    </ul>
+</li>
+
+<li class="slide standalone">
+  <h1>But the coolest thing is...</h1>
+  <div class="handout">
+    <p>And it is cool....</p>
+  </div>
+</li>
+
+<li class="slide">
+  <h1>XFN</h1>
+  <h2>Identity Reconciliation</h2>
+    <p>You can do this:</p>
+    <pre><code>&lt;a href="http://43things.com/people/view/ryansking" 
+      <em class="tag">rel="me"</em>&gt;43things&lt;/a&gt;</code></pre>
+    <p>To tie your online identities together.</p>
+</li>
+
+<li class="slide standalone">
+  <h1>hCalendar</h1>
+</li>
+
+
+<li class="slide">
+  <h1>hCalendar</h1>
+  <dl>
+    <dt>Purpose</dt>
+    <dd>Putting Event &amp; Todo data on the web</dd>
+    <dt>Example</dt>
+    <dd>(next slide)</dd>
+  </dl>
+</li>
+
+<li class="slide">
+  <h1>hCalendar</h1>
+  <h2>Example:iCal</h2>
+  <ol class="code incremental">
+    <li><code>BEGIN:VCALENDAR</code></li>
+    <li><code>BEGIN:VEVENT</code></li>
+    <li><code>SUMMARY:Microformats: What the Hell Are They and Why Should I Care?</code></li>
+    <li><code>DTSTART:20050926T000000Z</code></li>
+    <li><code>LOCATION:Balder Room</code></li>
+    <li><code>DTEND:20050926T010000Z</code></li>
+    <li><code>DESCRIPTION:Ryan King will explain why microformats are important \</code></li>
+    <li><code>and how you can mark up specific kinds of content in ways that make \</code></li>
+    <li><code>it easier for the right people to find your stuff.</code></li>
+    <li><code>END:VEVENT</code></li>
+    <li><code>END:VCALENDAR</code></li>
+  </ol>
+</li>
+
+<li class="slide">
+  <h1>hCalendar</h1>
+  <h2>Example:hCalendar</h2>
+    <ol class="code incremental">
+      <li><code>&lt;div class="vcalendar"&gt;</code></li>
+      <li><code> &lt;div class="vevent"&gt;</code></li>
+      <li><code>  &lt;div class="summary"&gt;Microformats: What the 
+        Hell Are They and Why Should I Care?&lt;/div&gt;</code></li>
+      <li><code>  &lt;abbr class="dtstart" title="20050926T050000-0700"&gt;
+        September 25th, 2005, 5PM&lt;/abbr&gt;</code></li>
+      <li><code>  &lt;abbr class="dtend" title="20050926T060000-0700"&gt;6PM&lt;/abbr&gt;</code></li>
+      <li><code>  &lt;div class="location"&gt;Balder Room&lt;/div&gt;</code></li>
+      <li><code>  &lt;div class="description"&gt;Ryan King will explain why 
+        microformats are important and how you can mark up specific kinds of 
+        content in ways that make it easier for the right people to find your 
+        stuff.&lt;/div&gt;</code></li>
+      <li><code> &lt;/div&gt;</code></li>
+      <li><code>&lt;/div&gt;</code></li>
+    </ol>
+</li>
+
+<li class="slide standalone">
+  <h1>hCard</h1>
+</li>
+
+<li class="slide">
+  <h1>hCard</h1>
+  <h2>vCard Example</h2>
+  <ol class="code incremental">
+    <li><code>BEGIN:VCARD</code></li>
+    <li><code>N:king;ryan;;;</code></li>
+    <li><code>FN:ryan king</code></li>
+    <li><code>ORG:technorati;</code></li>
+    <li><code>EMAIL;type=INTERNET;type=WORK;ryan@technorati.com</code></li>
+    <li><code>END:VCARD</code></li>
+  </ol>
+  <div class="handout">
+    <p>This is a simple version of my own vCard, exported from Apple's Address book.</p>
+    <p>Definitely machine readable only.</p>
+  </div>
+</li>
+
+<li class="slide">
+  <h1>hCard</h1>
+  <h2>vCard Example</h2>
+  <ol class="code incremental">
+    <li><code>&lt;div class="vcard"&gt;</code></li>
+    <li><code>&lt;span class="fn"&gt;ryan king&lt;/span&gt;</code></li>
+    <li><code>&lt;span class="org"&gt;technorati&lt;/span&gt;</code></li>
+    <li><code>&lt;span class="email"&gt;</code></li>
+    <li><code> &lt;span class="type"&gt;work&lt;/span&gt;</code></li>
+    <li><code> &lt;a class="value" 
+      href="mailto:ryan@technorati.com"&gt;ryan@technorati.com&lt;/a&gt;</code></li>
+    <li><code>&lt;/span&gt;</code></li>
+    <li><code>&lt;/div&gt;</code></li>
+  </ol>
+</li>
+
+<li class="slide standalone">
+  <h1>rel-license</h1>
+</li>
+
+<li class="slide">
+  <h1>rel-license</h1>
+  <dl>
+    <dt>Purpose</dt>
+    <dd>To declare licenses for content</dd>
+    <dt>Example</dt>
+    <dd>
+      <pre><code>&lt;a <em>rel="license"</em>href="http://creativecommons.org/licenses/by-nc-sa/2.0/"&gt;</code></pre>
+    </dd>
+  </dl>
+</li>
+
+<li class="slide standalone">
+  <h1>vote-links</h1>
+</li>
+
+
+<li class="slide">
+  <h1>rel-license</h1>
+  <dl>
+    <dt>Purpose</dt>
+    <dd>To make links-as-votes explicit</dd>
+    <dt>Example</dt>
+    <dd><pre><code>&lt;a <em>rev="vote-for"</em> href="http://xtech.org"&gt;</code></pre></dd>
+  </dl>
+</li>
+
+<li class="slide">
+  <h1>vote-links background</h1>
+  <ul>
+    <li>PageRank, HITS, etc treat votes as links</li>
+    <li>Not all links should be treated as votes</li>
+    <li>Let's make it explicit!</li>
+  </ul>
+</li>
+
+<li class="slide">
+  <h1>vote-links properties</h1>
+  <ul>
+    <li><code>vote-for</code></li>
+    <li><code>vote-abstain</code></li>
+    <li><code>vote-against</code></li>
+  </ul>
+</li>
+
+<li class="slide">
+  <h1>hReview</h1>
+  <dl>
+    <dt>Purpose</dt>
+    <dd>Publishing reviews of products, events, people, etc</dd>
+    <dt>Example</dt>
+    <dd>(next slide)</dd>
+  </dl>
+</li>
+
+<li class="slide">
+  <h1>hReview example</h1>
+  <h2>An example review of this event</h2>
+  <ol class="code incremental">
+    <li><code>&lt;div class="hreview"&gt;</code></li>
+    <li><code>  &lt;h2 class="summary"&gt;Awesome.&lt;/h2&gt;</code></li>
+    <li><code>  &lt;abbr class="dtreviewed" title="20060522T19:35+0100"&gt;
+       May 22, 2006&lt;/abbr&gt;</code></li>
+    <li><code>  by &lt;span class="reviewer"&gt;ryan king&lt;/span&gt;</code></li>
+    <li><code>  &lt;span class="type"&gt;event&lt;/span&gt;</code></li>
+    <li><code>  &lt;a href="http://refreshedinburgh.org/" class="item url"&gt;
+      XTech 2006&lt;/a&gt;</code></li>
+    <li><code>  &lt;span class="rating"&gt;5&lt;/span&gt;</code></li>
+    <li><code>&lt;/div&gt;</code></li>
+  </ol>
+</li>
+
+
+<li class="slide standalone">
+  <h1>hAtom</h1>
+</li>
+
+<li class="slide">
+  <h1>hAtom</h1>
+  <dl>
+    <dt>purpose</dt>
+    <dd>syndication feeds in (X)HTML</dd>
+  </dl>
+</li>
+
+<li class="slide">
+  <h1>hAtom Example</h1>
+  <ol class="code incremental">
+    <li><code>&lt;ol class=&quot;hfeed&quot;&gt;</code></li>
+    <li><code>  &lt;li class="hentry"&gt;</code></li>
+    <li><code>    &lt;h2 class=&quot;entry-title&quot;&gt;&lt;a href=&quot;...&quot; rel=&quot;bookmark&quot;&gt;
+      Adding Microformats to your site&lt;/a&gt;&lt;/h2&gt;</code></li>
+    <li><code>    &lt;div class=&quot;entry-content&quot;&gt;</code></li>
+    <li><code>      Blah blah blah</code></li>
+    <li><code>    &lt;/div&gt;</code></li>
+    <li><code>    &lt;p&gt;published &lt;abbr class=&quot;published&quot; title=&quot;2006-05-22T2000+0100&quot;&gt;
+      today&lt;/abbr&gt;&lt;/p&gt;</code></li>
+    <li><code>  &lt;/li&gt;</code></li>
+    <li><code>&lt;/ol&gt;</code></li>
+  </ol>
+</li>
+
+
+<li class="slide standalone">
+  <h1>hResume</h1>
+</li>
+
+<li class="slide">
+  <h1>hResume Example</h1>
+  
+  <ol class="code incremental">
+    <li><code>&lt;body class=&quot;hresume&quot;&gt;</code></li>
+    <li><code> &lt;p class=&quot;summary&quot;&gt;I&apos;m qualified!&lt;/p&gt;</code></li>
+    <li><code> &lt;address class=&quot;vcard&quot;&gt;</code></li>
+    <li><code>   &lt;a class=&quot;fn email&quot; href=&quot;mailto:ryan@theryanking.com&quot;&gt;Ryan King&lt;/a&gt;</code></li>
+    <li><code> &lt;/address&gt;</code></li>
+    <li><code> &lt;ol class=&quot;vcalendar&quot;&gt;</code></li>
+    <li><code>  &lt;li class=&quot;education vevent&quot;&gt;...&lt;/li&gt;</code></li>
+    <li><code>  &lt;li class=&quot;experience vevent&quot;&gt;...&lt;/li&gt;</code></li>
+    <li><code> &lt;/ol&gt;</code></li>
+    <li><code> &lt;ol&gt;</code></li>
+    <li><code>  &lt;li&gt;&lt;a rel=&quot;tag&quot; class=&quot;skill&quot; href=&quot;...&quot;&gt;...&lt;/li&gt;</code></li>
+    <li><code> &lt;/ol&gt;</code></li>
+    <li><code>&lt;/body&gt;</code></li>
+  </ol>
+</li>
+
+<li class="slide">
+  <h1>more specifically...</h1>
+  
+  <ol class="incremental code">
+    <li><code>&lt;li class=&quot;vevent exprience&quot;&gt;</code></li>
+    <li><code>  &lt;span class=&quot;summary&quot;&gt;Intern&lt;/span&gt;,</code></li>
+    <li><code>  &lt;span class=&quot;location&quot;&gt;Technorati&lt;/span&gt;,</code></li>
+    <li><code>  &lt;abbr class=&quot;dtstart&quot; title=&quot;2005-05-25&quot;&gt;May 2005&lt;/abbr&gt; - present</code></li>
+    <li><code>&lt;/li&gt;</code></li>
+    <li><code></code></li>
+    <li><code>&lt;li class=&quot;vevent experience&quot;&gt;</code></li>
+    <li><code> &lt;span class=&quot;summary vcard&quot;&gt;</code></li>
+    <li><code>  &lt;span class=&quot;title&quot;&gt;Teachers Assistant&lt;/span&gt;,</code></li>
+    <li><code>  &lt;span class=&quot;org&quot;&gt;University of San Francisco 
+      Computer Science Department&lt;/span&gt;</code></li>
+    <li><code> &lt;/span&gt;</code></li>
+    <li><code> &lt;abbr class=&quot;dtstart&quot; title=&quot;2005-02-01&quot;&gt;February 2005&lt;/abbr&gt; -</code></li>
+    <li><code> &lt;abbr class=&quot;dtend&quot; title=&quot;2005-04-25&quot;&gt;May 2005&lt;/abbr&gt;</code></li>
+    <li><code>&lt;/li&gt;</code></li>
+  </ol>
+  
+</li>
+
+<li class="slide">
+  <h1>skills</h1>
+   <ol class="incremental code">
+    <li><code>&lt;li&gt;
+      &lt;a rel=&quot;tag&quot;
+       href=&quot;http://en.wikipedia.org/wiki/C_Plus_Plus&quot;&gt;C++&lt;/a&gt;
+  &lt;/li&gt;</code></li>
+    <li><code>&lt;li&gt;
+      &lt;a rel=&quot;tag&quot; href=&quot;http://en.wikipedia.org/wiki/cobol&quot;&gt;
+       &lt;abbr title=&quot;COmmon Business Oriented Language&quot;&gt;COBOL&lt;/acronym&gt;&lt;/a&gt;
+  &lt;/li&gt;</code></li>
+  </ol>
+</li>
+
+<li class="slide">
+  <p>also..</p>
+  <ul class="incremental">
+    <li>affiliations</li>
+    <li>publications (pending citation format)</li>
+  </ul>
+
+</li>
+
+<li class="slide standalone">
+  <h1>What's next?</h1>
+</li>
+
+<li class="slide">
+  <h1>What's Next?</h1>
+  <ul>
+    <li>citations</li>
+    <li>conversation logs</li>
+    <li>hListing</li>
+    <li>genealogy?</li>
+    <li>?</li>
+  </ul>
+</li>
+
+<li class="slide standalone">
+  <h1><a href="http://microformats.org/">http://microformats.org</a></h1>
+</li>
+
+<li class="slide">
+  <h1>Credits</h1>
+  <h2>some slides reused from:</h2>
+  <ul>
+    <li><a href="http://theryanking.com/presentations/2005/webzine/">What the Hell are Microformats?</a>, by Ryan King</li>
+    <li><a href="http://tantek.com/presentations/2006/03/what-are-microformats/">What Are Microformats</a>, by <a href="http://tantek.com/">Tantek Çelik</a></li>
+    <li><a href="http://tantek.com/presentations/2005/03/elementsofxhtml/">Elements of Meaningful XHTML</a>, by Tantek Çelik</li>
+  </ul>
+</li>
+
+<li class="slide">
+  <h1>Colophon</h1>
+  <ul>
+    <li><a href="http://validator.w3.org/check/referer">XHTML</a></li>
+    <li><a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a></li>
+    <li><a href="http://meyerweb.com/eric/tools/s5/">S5 v1.2xoxo</a></li>
+    <li><a href="http://microformats.org/wiki/xoxo">XOXO</a></li>
+    <li><a href="http://microformats.org/wiki/hcard">hCard</a></li>
+    <li><a href="http://microformats.org/wiki/hcalendar">hCalendar</a></li>
+    <li><a href="http://microformats.org/wiki/rel-license">rel="license"</a></li>
+    <li id="license"><a rel="license" href="http://creativecommons.org/licenses/by/2.5/">Some rights reserved. CC by-2.5</a></li>
+    <li><a href="http://tantek.com/presentations/2006/03/what-are-microformats/">http://tantek.com/presentations/2006/03/what-are-microformats/</a></li>
+</ul>
+</li>
+
+</ol>
+
+</body>
+</html>
