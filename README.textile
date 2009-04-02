@@ -7,6 +7,10 @@ h1. How to Use It?
   hacker-slides sample.textile --output slides --theme simple
 
 
+h1. Sample
+
+ * "HackerSlides":http://jacktang.github.com/hackerslides/sample/
+
 h1. S5 Themes. Thank You, Designers
 
  * "S5: iBook-compatible themes":http://www.ibiblio.org/mcmahon/s5-iBook/index.html
