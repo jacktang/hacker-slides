@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/lib/version'
+require File.dirname(__FILE__) + '/lib/hacker_slides/version'
 
 spec = Gem::Specification.new do |s|
   s.name = 'hacker-slides'
@@ -10,7 +10,7 @@ spec = Gem::Specification.new do |s|
   s.homepage = "http://github.com/jacktang/hacker-slides"
   s.has_rdoc = true
   s.authors = ["Jack Tang"]
-  #s.add_dependency('nokogiri', '>= 1.2.2')
+  s.add_dependency('RedCloth', '>= 4.1.9') 
   #s.add_dependency('sqlite3-ruby', '>=1.2.4')
 
   s.require_path = 'lib'

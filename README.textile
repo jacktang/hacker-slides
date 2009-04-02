@@ -13,3 +13,9 @@ h1. S5 Themes. Thank You, Designers
  * "Presentations S5":http://www.jesusda.com/projects/presentaciones_s5
  * "Windgazer styles":http://www.windgazer.nl/projects/jsrepository/S5.wgd/
  * "Glossdeck, A New Presentation Theme for S5":http://blog.jm3.net/2007/03/18/glossdeck-a-presentation-theme/
+ * "Microformats":http://theryanking.com/presentations/
+ * "":http://freshfoo.com/presentations/PyCon-Italia-Due/slides/
+ * http://www.forusers.com/static/html/sample.html
+ * http://alice.wu-wien.ac.at:8000/s5/presentation?slideshow=1&style=flower
+ * http://atuan.com/s5/
+ * http://python.net/~goodger/projects/pycon/2007/idiomatic/presentation.html

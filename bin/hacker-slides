@@ -1,0 +1,84 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'ostruct'
+require 'optparse'
+
+$LOAD_PATH.unshift(File.dirname(__FILE__) + '/../lib')
+
+require 'hacker_slides'
+
+module HackerSlides
+  class Command
+
+    def run(args) 
+
+      opts = OpenStruct.new
+      
+      opt_parser = OptionParser.new do |cmd|
+        
+        cmd.banner = "Usage: slideshow [options] name"
+        
+        cmd.on( '-o', '--output PATH', 'Output Path' ) do |path| 
+          opts.output = path
+        end
+        
+        cmd.on( "-b", "--bundle NAME", "Template Bundle" ) do |name|
+          opts.bundle = name
+        end
+        
+        cmd.on( '-f', '--fetch URI', 'Fetch Bundle' ) do |url|
+          opts.fetch_uri = url
+        end
+        
+        cmd.on( '-l', '--list', 'List Installed Bundles' ) do 
+          opts.list = true
+        end
+        
+        # todo: find different letter for debug trace switch (use v for version?)
+        cmd.on( "-v", "--verbose", "Show debug trace" ) do
+          #logger.datetime_format = "%H:%H:%S"
+          #logger.level = Logger::DEBUG
+        end
+        
+        cmd.on_tail( "-h", "--help", "Show this message" ) do
+          puts "HackerSlides: dead simple slides creator for lazy hackers"
+          puts
+          puts cmd.help
+          puts
+          puts "Examples:"
+          puts " hacker-slides sample.textile"
+          puts " hacker-slides -o slides sample.textile"
+          puts " hacker-slides -b s5-simple sample.textile"
+          puts " hacker-slides -l"
+          puts " hacker-slides -f s5-cool"
+          puts 
+          puts "Further information:"
+          puts " http://www.github.com/jacktang/hacker-slides"
+          puts
+          exit
+        end
+      end
+      
+      opt_parser.parse!( args )
+      
+      puts "HackerSlides Version: #{VERSION} on Ruby #{RUBY_VERSION} (#{RUBY_RELEASE_DATE}) [#{RUBY_PLATFORM}]"
+ 
+      engine = HackerSlides::Engine::S5SlidesGenerator.new
+      if opts.list
+        engine.list_bundles
+      else
+        bundle_name = opts.bundle || 's5-simple'
+        output_dir = opts.output_dir || 'slides/'
+
+        args.each do |arg|
+          engine.create_slides(arg, bundle_name, output_dir)
+        end
+      end
+    end
+  end
+end
+
+if __FILE__ == $0
+  HackerSlides::Command.new.run(ARGV)
+end

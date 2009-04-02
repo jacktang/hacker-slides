@@ -21,10 +21,34 @@ Rake::RDocTask.new(:rdoc) do |task|
   task.rdoc_files.include(['README.textile', 'LICENSE'])
 end
 
+desc 'Generate all bundles from bundles-src'
+task 'gen-bundles' do
+  tar_command = 'tar'
+  flag = 'z'
+  directory bundles_dir
+  
+  Dir.glob(File.join(bundles_src_dir, '*')).each do |bundle_src_path|
+    bundle_name = bundle_src_path.split('/').last
+    bundle = bundle_file(bundle_name)
 
+    chdir(bundles_dir) do
+      sh %{#{tar_command} #{flag}cvf #{bundle} #{bundle_src_path} >/dev/null 2>&1}
+    end
+    puts "create bundle #{bundle.inspect}"
+  end
+end
 
-# Default Rake task is compile
-# task :default => :compile
+def bundle_file(bundle_name)
+  "#{bundle_name}.bundle"
+end
+
+def bundles_dir
+  return File.expand_path(File.dirname(__FILE__) + '/bundles')
+end
+
+def bundles_src_dir
+  return File.expand_path(File.dirname(__FILE__) + '/bundles-src')
+end
 
 desc "If you're building from sources, run this task first to setup the necessary dependencies"
 task 'setup' do
