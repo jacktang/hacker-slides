@@ -3,6 +3,7 @@ require 'rake/clean'
 require 'rake/rdoctask'
 require 'rake/gempackagetask'
 require 'spec/rake/spectask'
+require 'highline/import'
 
 spec = Gem::Specification.load(File.join(File.dirname(__FILE__), 'hacker-slides.gemspec'))
 
@@ -24,17 +25,49 @@ end
 desc 'Generate all bundles from bundles-src'
 task 'gen-bundles' do
   tar_command = 'tar'
-  flag = 'z'
   directory bundles_dir
   
   Dir.glob(File.join(bundles_src_dir, '*')).each do |bundle_src_path|
-    bundle_name = bundle_src_path.split('/').last
-    bundle = bundle_file(bundle_name)
+    bundle_name = File.basename(bundle_src_path, '.*')
+    bundle_src_dir = File.join(bundles_src_dir, bundle_name)
+    dest_bundle = File.join(bundles_dir, bundle_file(bundle_name))
 
-    chdir(bundles_dir) do
-      sh %{#{tar_command} #{flag}cvf #{bundle} #{bundle_src_path} >/dev/null 2>&1}
+    chdir(bundle_src_dir) do
+      sh %{#{tar_command} czf #{dest_bundle} * >/dev/null 2>&1}
     end
-    puts "create bundle #{bundle.inspect}"
+    puts "create bundle #{bundle_name.inspect}"
+  end
+end
+
+desc "Generate manifest for specified bundle"
+task 'gen-manifest' do
+  bundle_name = ENV['BUNDLE']
+  if(bundle_name.nil?)
+    puts "please specify the name of bundle"
+  end
+
+  bundle_src = File.join(bundles_src_dir, bundle_name)
+
+  if(File.exist?(bundle_src))
+    manifest = File.join(bundle_src, 'MANIFEST')
+    if(!File.exist?(manifest) || 
+        (File.exist?(manifest)) && (ENV['OVERWRITE'].to_s.downcase == 'true' ||
+           agree("This task will overwrite the MANIFEST file. Are you sure you want to continue? [yn] ")))
+
+      manifest_items = []
+      base_len = bundle_src.size
+      Dir.glob(File.join(bundle_src, '**/*')).each do |bundle_src_path|
+        path = bundle_src_path[(base_len+1)..-1]
+        manifest_items << path if(path != "MANIFEST")
+      end
+      
+      File.open(manifest, 'w') do |f|
+        f.puts(manifest_items.join("\n"))
+      end
+      puts "MANIFEST under #{bundle_name} is generated"
+    end
+  else
+    puts "#{bundle_name} doesn't exist under bundles-src"
   end
 end
 
@@ -49,6 +82,7 @@ end
 def bundles_src_dir
   return File.expand_path(File.dirname(__FILE__) + '/bundles-src')
 end
+
 
 desc "If you're building from sources, run this task first to setup the necessary dependencies"
 task 'setup' do
@@ -66,9 +100,12 @@ task 'setup' do
 end
 
 gem = Rake::GemPackageTask.new(spec) do |pkg|
+  #Rake::Task['gen-bundles'].execute
   pkg.need_tar = true
   pkg.need_zip = true
 end
+
+
 
 desc "Install the package locally"
 task 'install'=>['setup','package'] do |task|

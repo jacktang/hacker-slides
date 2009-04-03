@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'RedCloth'
+#require 'BlueCloth'
 
 module HackerSlides
   module Engine

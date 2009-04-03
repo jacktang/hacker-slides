@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<%=slides_metadata%>
+<!-- configuration parameters -->
+<meta name="defaultView" content="slideshow" />
+<meta name="controlVis" content="hidden" />
+<!-- style sheet links -->
+<link rel="stylesheet" href="ui/microformats2/slides.css" type="text/css" media="projection" id="slideProj" />
+<link rel="stylesheet" href="ui/microformats2/outline.css" type="text/css" media="screen" id="outlineStyle" />
+<link rel="stylesheet" href="ui/microformats2/print.css" type="text/css" media="print" id="slidePrint" />
+<link rel="stylesheet" href="ui/microformats2/opera.css" type="text/css" media="projection" id="operaFix" />
+<!-- embedded styles -->
+<style type="text/css" media="all">
+#slide0 h1 {
+  text-align: center;
+}
+
+#slide0 h3 a{
+  color:#E97E00;
+}
+
+.slide div.notes{
+  display:none;
+}
+
+.slide.standalone h1 {
+  text-align: center;
+  margin-top:3em;
+  font-size:200%;
+}
+
+.slide.whatcha-want p{
+  text-align: center;
+  font-size: 175%;
+}
+
+code em.tagspace {
+  color:#E97E00;
+}
+
+code em.tag {
+  color:#3AF;
+}
+
+ol.code li code {
+  color:white;
+  font-size:90%;
+}
+
+ol.code li.incremental code {
+  color:grey;
+  font-size:90%;
+}
+
+ol.code li.current code {
+  color:#E97E00;
+  font-size:90%;
+}
+
+.slide ol.code li { margin: 0px;}
+.slide ol.code li {font-size: 80%}
+.slide ol.code {
+    list-style-type: decimal-leading-zero;
+    list-style-position: inside;
+}
+.slide ol.code li code {
+    white-space: pre;
+}
+
+</style>
+<!-- S5 JS -->
+<script src="ui/default/slides.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="layout">
+<div id="controls"><!-- DO NOT EDIT --></div>
+<div id="currentSlide"><!-- DO NOT EDIT --></div>
+<div id="header"></div>
+<div id="footer">
+<%=slides_footer%>
+</div>
+</div>
+
+<ol class="xoxo presentation">
+
+<%=slides%>
+
+</ol>
+
+</body>
+</html>

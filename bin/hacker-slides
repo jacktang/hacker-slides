@@ -72,13 +72,16 @@ module HackerSlides
         output_dir = opts.output_dir || 'slides/'
 
         args.each do |arg|
-          engine.create_slides(arg, bundle_name, output_dir)
+          start_here = engine.create_slides(arg, bundle_name, output_dir)
+          #post_gen_script = File.expand_path('~/.hackerslides/post_gen')
+          #command = "#{post_gen_script} #{start_here}"
+          #puts "==> #{command.inspect}"
+          #system command
         end
       end
     end
   end
 end
 
-if __FILE__ == $0
-  HackerSlides::Command.new.run(ARGV)
-end
+
+HackerSlides::Command.new.run(ARGV)

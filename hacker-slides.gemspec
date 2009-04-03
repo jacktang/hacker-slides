@@ -11,11 +11,11 @@ spec = Gem::Specification.new do |s|
   s.has_rdoc = true
   s.authors = ["Jack Tang"]
   s.add_dependency('RedCloth', '>= 4.1.9') 
-  #s.add_dependency('sqlite3-ruby', '>=1.2.4')
+  s.add_dependency('BlueCloth', '>=1.0.0')
 
   s.require_path = 'lib'
   s.executables = ['hacker-slides', 'hslides']
 
   # ruby -rpp -e' pp `git ls-files`.split("\n") '
-  s.files = Dir['lib/**/*.rb'] + Dir['spec/**/*.rb'] + ["LICENSE", "README.textile"]
+  s.files = Dir['bundles/*.bundle'] + Dir['lib/**/*.rb'] + Dir['spec/**/*.rb'] + ["LICENSE", "README.textile"]
 end

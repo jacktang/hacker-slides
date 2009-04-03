@@ -1,2 +1,14 @@
-ui/
+ui
+ui/glossdeck
+ui/glossdeck/iepngfix.htc
+ui/glossdeck/gradient-bg.jpg
+ui/glossdeck/framing.css
+ui/glossdeck/s5-core.css
+ui/glossdeck/pretty.css
+ui/glossdeck/blank.gif
+ui/glossdeck/outline.css
+ui/glossdeck/print.css
+ui/glossdeck/opera.css
+ui/glossdeck/slides.css
+ui/glossdeck/slides.js
 template.html.erb

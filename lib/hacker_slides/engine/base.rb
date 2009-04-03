@@ -5,6 +5,7 @@ require 'logger'
 
 require 'hacker_slides/engine/content_helper'
 require 'hacker_slides/engine/markup_engine'
+require 'minitar'
 
 module HackerSlides
   module Engine
@@ -32,10 +33,9 @@ module HackerSlides
         output_dir = File.expand_path(File.join(output_dir, basename))
         FileUtils.mkdir_p(output_dir) unless File.directory?(output_dir) 
 
+        bundle_path = lookup_bundle_path(bundle_name)
 
-        manifest_path = lookup_manifest_path(bundle_name)
-
-        manifest = load_manifest(manifest_path)
+        manifest = load_manifest(bundle_path)
         
         content_with_metas = File.read(input_file)
 
@@ -83,6 +83,8 @@ module HackerSlides
         slides = post_processing(content)
 
         start_here = nil
+        static_files = []
+
         # copy manifest files
         manifest.each do |file|
           if(File.extname(file) == '.erb')
@@ -94,16 +96,24 @@ module HackerSlides
               outname = File.basename(file, '.*')
             end
             File.open(with_output_path(outname, output_dir), "w+") do |out|
-              out.puts render_erb_template(File.read(file), binding)
+              Zlib::GzipReader.open(bundle_path) do |tgz|
+                Archive::Tar::Minitar::Input.open(tgz) do |stream|
+                  stream.each { |entry| out.puts render_erb_template(entry.read, binding) if(entry.full_name == file )}
+                end
+              end
             end
           else
-            FileUtils.cp_r(file, output_dir)
+            static_files << file
           end
+
+          extract_file_from_bundle(bundle_path, static_files, output_dir)
         end
 
         puts 'slides generation done.'
         puts "start here: #{start_here}" if start_here
         puts 
+
+        return start_here
       end
       
       def list_bundles
@@ -120,22 +130,35 @@ module HackerSlides
         puts 
       end
 
-      def load_manifest(manifest_file)
-        manifest = []
-        # parse manifest
-        basedir = File.dirname(manifest_file)
-        File.open(manifest_file).readlines.each_with_index do |line,i|
-          case line
-          when /^\s*$/
-            # skip empty lines
-          when /^\s*#.*$/
-            # skip comment lines
-          else       
-            manifest << File.join(basedir, line.strip)
+      def load_manifest(bundle)
+        Zlib::GzipReader.open(bundle) do |tgz|
+          Archive::Tar::Minitar::Input.open(tgz) do |stream|
+            stream.each do |entry|
+              if(entry.name == 'MANIFEST')
+                manifest = []
+                entry.read.split(/\n/).each_with_index do |line,i|
+                  case line
+                  when /^\s*$/
+                    # skip empty lines
+                  when /^\s*#.*$/
+                    # skip comment lines
+                  else       
+                    manifest << line.strip
+                  end
+                end
+                return manifest
+              end
+            end
           end
         end
-        
-        manifest
+        return nil
+      end
+
+
+      def extract_file_from_bundle(bundle, files, dest)
+        Zlib::GzipReader.open(bundle) do |tgz|
+          Archive::Tar::Minitar.unpack(tgz, dest, files)
+        end
       end
 
       def markup_type(extname)
@@ -161,12 +184,12 @@ module HackerSlides
         ERB.new(content).result(the_binding)
       end
       
-      def lookup_manifest_path(bundle_name)
-        return File.join(builtin_bundle_dir, bundle_name, 'MANIFEST')
+      def lookup_bundle_path(bundle_name)
+        return File.join(builtin_bundle_dir, "#{bundle_name}.bundle")
       end
 
       def builtin_bundle_dir
-        return File.expand_path(File.dirname(__FILE__) + '/../../../bundles-src')
+        return File.expand_path(File.dirname(__FILE__) + '/../../../bundles')
       end
 
     end

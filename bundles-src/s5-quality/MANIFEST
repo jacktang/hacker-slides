@@ -7,11 +7,15 @@ ui/default/pretty.css
 ui/default/blank.gif
 ui/default/outline.css
 ui/default/pics
+ui/default/pics/back-slide-print.png
 ui/default/pics/favicon.ico
 ui/default/pics/background-main.png
+ui/default/pics/back-index.png
 ui/default/pics/table-background.png
 ui/default/pics/logo.png
 ui/default/pics/background-head.png
+ui/default/pics/back-handout-print.png
+ui/default/pics/back_console.png
 ui/default/pics/table-header.png
 ui/default/pics/background-foot.png
 ui/default/print.css
