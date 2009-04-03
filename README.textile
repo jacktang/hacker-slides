@@ -6,13 +6,17 @@ h1. Install It!
 
  * Install from source
  
+<pre>
     git clone git://github.com/jacktang/hacker-slides.git
     rake install
+</pre>
 
  * Install through Gem directory
-   
+
+<pre>   
     gem sources -a http://gems.github.com
     sudo gem install sudo gem install jacktang-hacker-slides
+</pre>
 
 h1. Sample Slides
 
