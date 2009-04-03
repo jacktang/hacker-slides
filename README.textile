@@ -1,4 +1,4 @@
-h1. Story About Hacker-Slides
+h1. Story About HackerSlides
 
 Well, I am one not-well-paid programmer undex linux and far far way from such amazing presentation software -- Apple's keynotes. And I meet some other hackers weekly and exchange the industry news and ideas, of course, by presentation. Meanwhile,I'd like my presentation can be pushed to the git repository so that I might refine some great ideas step by step. I am familiar with S5, but tired to write HTML code. To me, Textile syntax is easy to me. So the project launched...
 
@@ -19,16 +19,27 @@ h1. Sample Slides
 
 h1. Amazing? Use It
 
- * List all bundles/themes
-    
-      hacker-slides -l
+ * Create slides from sketch
+
+     hacker-slides --sketch sample.textile
 
  * Convert Textile to S5 slides
     
-      hacker-slides sample.textile -o slides -b s5-simple
+     hacker-slides sample.textile -o slides -b s5-simple
+
+ * List all bundles/themes
+    
+     hacker-slides -l
 
 
-h1. Always Thanks Designers!
+h1. Emacs & HackerSlides
+
+ * Textile mode for Emacs (todo)
+ * Generate slide in Emacs (todo) 
+
+
+
+h1. Always Thanks Designers
 
  * "S5: iBook-compatible themes":http://www.ibiblio.org/mcmahon/s5-iBook/index.html
  * "Presentations S5":http://www.jesusda.com/projects/presentaciones_s5

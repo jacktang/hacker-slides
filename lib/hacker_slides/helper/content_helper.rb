@@ -1,6 +1,7 @@
 module HackerSlides
   module ContentHelper
-
+    #
+    #
     def slides_metadata
       metadata_str = ''
       metadata_str << "<title>#{@presentation.title}</title>\n"
@@ -15,6 +16,8 @@ module HackerSlides
       return metadata_str
     end
 
+    #
+    #
     def slides_footer
      footer = <<EOF 
 <h1>#{@presentation.title}</h1>

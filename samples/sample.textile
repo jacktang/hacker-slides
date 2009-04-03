@@ -1,0 +1,29 @@
+title: Presentation Title
+author: FirstName LastName
+email: name@company.com
+company: company
+website: http://example.com
+version: 0.0.1
+
+
+h1. How-to Start Slide
+
+ * Know Textile Markup Before Starting
+   * "A Textile Reference":http://hobix.com/textile/ 
+ * Organize thoughts
+ * Keep It Simple, Smart!
+
+h1. Tips From Steve Jobs
+
+ # Develop rapport with the audience.
+ # Give them an idea of where you're going.
+ # Show your enthusiasm.
+ # It's not about numbers, it's about what the numbers mean.
+ # Make it visual.
+ # Save the best for last.
+
+h1. Learn it, Paractise More
+
+ * "Presentation Zen":http://www.presentationzen.com/
+ * "SlideShare.net":http://www.slideshare.net/
+ * "TED":http://www.ted.com

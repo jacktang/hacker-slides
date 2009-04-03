@@ -4,8 +4,9 @@ require 'rubygems'
 require 'ostruct'
 require 'optparse'
 
-$LOAD_PATH.unshift(File.dirname(__FILE__) + '/../lib')
+# $LOAD_PATH.unshift(File.dirname(__FILE__) + '/../lib')
 
+require 'highline/import'
 require 'hacker_slides'
 
 module HackerSlides
@@ -25,6 +26,10 @@ module HackerSlides
         
         cmd.on( "-b", "--bundle NAME", "Template Bundle" ) do |name|
           opts.bundle = name
+        end
+        
+        cmd.on( "-s", "--sketch", "Create Slides From Sketch" ) do |sketch|
+          opts.sketch = true
         end
         
         cmd.on( '-f', '--fetch URI', 'Fetch Bundle' ) do |url|
@@ -64,19 +69,48 @@ module HackerSlides
       
       puts "HackerSlides Version: #{VERSION} on Ruby #{RUBY_VERSION} (#{RUBY_RELEASE_DATE}) [#{RUBY_PLATFORM}]"
  
-      engine = HackerSlides::Engine::S5SlidesGenerator.new
+      engine = HackerSlides::SlidesEngine.new
       if opts.list
-        engine.list_bundles
+        builtin_bundles, usr_bundles = HackerSlides::Bundle.list_bundles
+        
+        if(not usr_bundles.empty?)
+          puts 
+          puts 'User bundles:'
+          usr_bundles.each do |bundle|
+            puts "  * #{bundle}"
+          end
+        end
+        puts 
+        puts 'Built-in bundles:'
+        builtin_bundles.each do |bundle|
+          puts "  * #{bundle}"
+        end
+        puts
+      elsif opts.sketch
+        args.each do |arg|
+          file = File.expand_path(arg)
+          if(! File.exist?(file) || (File.exist?(file) && 
+            agree("This task will overwrite the #{arg} file. Are you sure you want to continue? [yn] ")))
+            engine.sketch_slides(arg)
+            puts "create #{arg} from sketch"
+            puts 
+          end
+        end
       else
         bundle_name = opts.bundle || 's5-simple'
         output_dir = opts.output_dir || 'slides/'
 
         args.each do |arg|
+          bundle_category = bundle_name.split('-').first
+          if(bundle_category == 's5')
+            HackerSlides::SlidesEngine.send(:include, HackerSlides::S5SlidesGenerator)
+          end
           start_here = engine.create_slides(arg, bundle_name, output_dir)
-          #post_gen_script = File.expand_path('~/.hackerslides/post_gen')
-          #command = "#{post_gen_script} #{start_here}"
-          #puts "==> #{command.inspect}"
-          #system command
+          if(start_here)
+            puts "slides are created"
+            puts "please check the link: #{start_here}"
+            puts
+          end
         end
       end
     end

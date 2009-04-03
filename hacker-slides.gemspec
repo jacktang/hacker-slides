@@ -12,10 +12,11 @@ spec = Gem::Specification.new do |s|
   s.authors = ["Jack Tang"]
   s.add_dependency('RedCloth', '>= 4.1.9') 
   s.add_dependency('BlueCloth', '>=1.0.0')
+  s.add_dependency('highline', '>=1.5.0')
 
   s.require_path = 'lib'
-  s.executables = ['hacker-slides', 'hslides']
+  s.executables = ['hacker-slides']
 
   # ruby -rpp -e' pp `git ls-files`.split("\n") '
-  s.files = Dir['bundles/*.bundle'] + Dir['lib/**/*.rb'] + Dir['spec/**/*.rb'] + ["LICENSE", "README.textile"]
+  s.files = Dir['bundles/*.bundle'] + Dir['samples/sample.*'] + Dir['lib/**/*.rb'] + Dir['spec/**/*.rb'] + ["LICENSE", "README.textile"]
 end
