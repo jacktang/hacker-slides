@@ -1,24 +1,41 @@
 h1. Story About Hacker-Slides
 
-Well, I am one not-well-paid programmer undex linux and far far way from such amazing presentation software -- Apple's keynotes. And I meet some other hackers weekly and exchange the industry news and ideas, of course, by presentation. Meanwhile,I'd like my presentation can be pushed to the git repository so that I might refine some great ideas step by step. I am familiar with S5, but tried to write HTML code. To me, Textile syntax is easy to me. So the project launched...
+Well, I am one not-well-paid programmer undex linux and far far way from such amazing presentation software -- Apple's keynotes. And I meet some other hackers weekly and exchange the industry news and ideas, of course, by presentation. Meanwhile,I'd like my presentation can be pushed to the git repository so that I might refine some great ideas step by step. I am familiar with S5, but tired to write HTML code. To me, Textile syntax is easy to me. So the project launched...
 
-h1. How to Use It?
+h1. Install It!
 
-  hacker-slides sample.textile --output slides --theme simple
+ * Install from source
+ 
+    git clone git://github.com/jacktang/hacker-slides.git
+    rake install
 
+ * Install through Gem directory
+ 
+    sudo gem install hacker-slides -s http://gems.github.com/
 
-h1. Sample
+h1. Sample Slides
 
  * "HackerSlides":http://jacktang.github.com/hackerslides/sample/
 
-h1. S5 Themes. Thank You, Designers
+h1. Amazing? Use It
+
+ * List all bundles/themes
+    
+      hacker-slides -l
+
+ * Convert Textile to S5 slides
+    
+      hacker-slides sample.textile -o slides -b s5-simple
+
+
+h1. Always Thanks Designers!
 
  * "S5: iBook-compatible themes":http://www.ibiblio.org/mcmahon/s5-iBook/index.html
  * "Presentations S5":http://www.jesusda.com/projects/presentaciones_s5
  * "Windgazer styles":http://www.windgazer.nl/projects/jsrepository/S5.wgd/
  * "Glossdeck, A New Presentation Theme for S5":http://blog.jm3.net/2007/03/18/glossdeck-a-presentation-theme/
  * "Microformats":http://theryanking.com/presentations/
- * "":http://freshfoo.com/presentations/PyCon-Italia-Due/slides/
+ * http://freshfoo.com/presentations/PyCon-Italia-Due/slides/
  * http://www.forusers.com/static/html/sample.html
  * http://alice.wu-wien.ac.at:8000/s5/presentation?slideshow=1&style=flower
  * http://atuan.com/s5/
