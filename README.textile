@@ -10,8 +10,9 @@ h1. Install It!
     rake install
 
  * Install through Gem directory
- 
-    sudo gem install hacker-slides -s http://gems.github.com/
+   
+    gem sources -a http://gems.github.com
+    sudo gem install sudo gem install jacktang-hacker-slides
 
 h1. Sample Slides
 
