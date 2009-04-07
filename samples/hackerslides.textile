@@ -34,11 +34,11 @@ h1. HackerSlides Promises More ...
 h1. How to Use HackerSlides
 
  * sudo apt-get install ruby
- * sudo gem install hacker-slides -s http://gems.github.com
- * hacker-slides -h
- * hacker-slides -l
- * hacker-slides -g myslide.textile
+ * gem -a http://gems.github.com
+ * sudo gem install hacker-slides 
+ * hacker-slides -s myslide.textile
  * hacker-slides myslide.textile -o slides -b s5-simple
+ * hacker-slides -l
 
 h1. Not the End
 

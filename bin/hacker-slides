@@ -4,7 +4,7 @@ require 'rubygems'
 require 'ostruct'
 require 'optparse'
 
-# $LOAD_PATH.unshift(File.dirname(__FILE__) + '/../lib')
+$LOAD_PATH.unshift(File.dirname(__FILE__) + '/../lib')
 
 require 'highline/import'
 require 'hacker_slides'
@@ -39,6 +39,15 @@ module HackerSlides
         cmd.on( '-l', '--list', 'List Installed Bundles' ) do 
           opts.list = true
         end
+
+        cmd.on( '-r', '--remote URL', 'Remote Bundle Source' ) do |remote_src| 
+          opts.remote_src = remote_src
+        end
+
+        cmd.on( '-i', '--install BUNDLE', 'Bundle to Install' ) do |install_bundle| 
+          opts.install_bundle = install_bundle
+        end
+
         
         # todo: find different letter for debug trace switch (use v for version?)
         cmd.on( "-v", "--verbose", "Show debug trace" ) do
@@ -52,11 +61,11 @@ module HackerSlides
           puts cmd.help
           puts
           puts "Examples:"
-          puts " hacker-slides sample.textile"
+          puts " hacker-slides -S sample.textile"
           puts " hacker-slides -o slides sample.textile"
           puts " hacker-slides -b s5-simple sample.textile"
           puts " hacker-slides -l"
-          puts " hacker-slides -f s5-cool"
+          puts " hacker-slides -s http://example.com/bundles/ -i s5-simple"
           puts 
           puts "Further information:"
           puts " http://www.github.com/jacktang/hacker-slides"
@@ -69,7 +78,6 @@ module HackerSlides
       
       puts "HackerSlides Version: #{VERSION} on Ruby #{RUBY_VERSION} (#{RUBY_RELEASE_DATE}) [#{RUBY_PLATFORM}]"
  
-      engine = HackerSlides::SlidesEngine.new
       if opts.list
         builtin_bundles, usr_bundles = HackerSlides::Bundle.list_bundles
         
@@ -86,7 +94,14 @@ module HackerSlides
           puts "  * #{bundle}"
         end
         puts
+      elsif opts.install_bundle
+        src = opts.remote_src || './'
+        bundle = opts.install_bundle
+        puts "install #{bundle.inspect} bundle from #{src}"
+        HackerSlides::Bundle.install(src, bundle)
+
       elsif opts.sketch
+        engine = HackerSlides::SlidesEngine.new 
         args.each do |arg|
           file = File.expand_path(arg)
           if(! File.exist?(file) || (File.exist?(file) && 
@@ -97,6 +112,7 @@ module HackerSlides
           end
         end
       else
+        engine = HackerSlides::SlidesEngine.new
         bundle_name = opts.bundle || 's5-simple'
         output_dir = opts.output_dir || 'slides/'
 
